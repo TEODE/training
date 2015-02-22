@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="store">
+<head lang="en">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap.min.css"/>
+    <style>
+        .ng-invalid.ng-dirty {
+            border-color: #FA787E;
+        }
+        .ng-valid.ng-dirty {
+            border-color: #78FA89;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="StoreController as store">
+    <div ng-repeat="product in store.products" >
+        <h1><product-title></product-title></h1>
+        <h2> ${{product.price}} </h2>
+        <p> {{product.description}} </p>
+        <img ng-src="{{product.images[0].full}}" />
+        <h3><product-title/></h3>
+        <product-panels>
+        </product-panels>
+        <button ng-show="product.canPurchase">Add to Cart</button>
+    </div>
+</div>
+<script type="application/javascript" src="../lib/angular.min.js"></script>
+<script type="application/javascript" src="app.js"></script>
+
+</body>
+</html>
