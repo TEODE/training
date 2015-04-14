@@ -4,4 +4,4 @@ Core examples following [JavaScript: The Good Parts](http://www.amazon.com/JavaS
 ## Angular.js
 Angular.js app building process following the [Free Angular.js online course](http://campus.codeschool.com/courses/shaping-up-with-angular-js/intro) by Code School
 ## Design Patterns
-Design patterns following [Learning Javascript Design Patterns](http://addyosmani.com/resources/essentialjsdesignpatterns/book/)
+Design patterns following [Learning Javascript Design Patterns](http://addyosmani.com/resources/essentialjsdesignpatterns/book/) by Addy Osmani
