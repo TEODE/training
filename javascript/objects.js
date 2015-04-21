@@ -56,3 +56,14 @@ another_stooge.nickname = "Moe";
 delete another_stooge.nickname; //remove a property from object
 
 console.log(another_stooge);
+
+function createName(name) {
+    if (typeof name === "string") {
+        return name;
+    }
+    else {
+        return name.join(" ");
+    }
+}
+var greetingMessage = 'Greetings, ' + createName(["Sam", "Smith"]);
+console.log(greetingMessage);
