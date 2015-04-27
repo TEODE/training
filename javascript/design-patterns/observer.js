@@ -62,4 +62,65 @@ var pubsub = {};
     };
 })( pubsub );
 
+/*]
+Example 1: basic use of publishers and subscribers
+ */
+
+var testHandler = function (topics, data) {
+    console.log(topics + ": " + data);
+};
+
+// Subscribers basically "subscribe" (or listen)
+// And once they've been "notified" their callback functions are invoked
+var testSubscription = pubsub.subscribe('example1', testHandler);
+
+// Publishers are in charge of "publishing" notifications about events
+pubsub.publish('example1', 'hello world!');
+pubsub.publish('example1', ['test', 'a', 'b', 'c']);
+pubsub.publish('example1', [{
+    'color': 'blue'
+}, {
+    'test': 'hello'
+}]);
+
+// Unsubscribe if you no longer wish to be notified
+pubsub.unsubscribe(testSubscription);
+// This will fail
+pubsub.publish('example1', 'hello again! (this will fail)')
+
+
+/*
+Example 2: UI notifications using pub/sub
+ */
+var grid = {
+
+    refreshData: function(){
+        console.log('retrieved latest data from data cache');
+        console.log('updated grid component');
+    },
+
+    updateCounter: function(){
+        console.log('data last updated at: ' + getCurrentTime())
+    }
+};
+
+// a very basic mediator
+
+var gridUpdate = function( topics, data ) {
+    grid.refreshData();
+    grid.updateCounter();
+}
+
+var dataSubscription = pubsub.subscribe( 'dataUpdated', gridUpdate );
+pubsub.publish( 'dataUpdated', 'new stock data available!' );
+pubsub.publish( 'dataUpdated', 'new stock data available!' );
+
+function getCurrentTime() {
+    var date = new Date(),
+        m = date.getMonth() + 1,
+        d = date.getDate(),
+        y = date.getFullYear(),
+        t = date.toLocaleTimeString().toLowerCase();
+        return (m + '/' + d + '/' + y + ' ' + t);
+}
 
