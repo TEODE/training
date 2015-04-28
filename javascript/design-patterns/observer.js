@@ -124,3 +124,58 @@ function getCurrentTime() {
         return (m + '/' + d + '/' + y + ' ' + t);
 }
 
+/*
+Example 3: Taking notifications further
+ */
+var grid2 = {
+
+    addEntry: function (data) {
+        if (data !== 'undefined') {
+            console.log('Entry:'
+            + data.title
+            + ' Changenet / %'
+            + data.changenet
+            + '/' + data.percentage + ' % added');
+        }
+    },
+
+    updateCounter: function (timestamp) {
+        console.log('grid2 last updated at: ' + timestamp);
+    }
+};
+
+var gridUpdate2 = function (topics, data) {
+    grid2.addEntry(data);
+    grid2.updateCounter(data.timestamp);
+}
+
+var gridSubscription = pubsub.subscribe('dataUpdated', gridUpdate2);
+
+
+pubsub.publish('dataUpdated', {
+    title: "Microsoft shares",
+    changenet: 4,
+    percentage: 33,
+    timestamp: '17:34:12'
+
+});
+
+pubsub.publish('dataUpdated', {
+    title: "Dell shares",
+    changenet: 10,
+    percentage: 20,
+    timestamp: '17:35:16'
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
