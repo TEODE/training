@@ -36,3 +36,24 @@ var mediator = (function() {
         }
     };
 })();
+
+(function( m ){
+
+    // Set a default value for "person"
+    var person = "Luke";
+
+    // Subscribe to a topic/event called 'nameChange' with
+    // a callback function which will log the original
+    // person's name and (if everything works) the incoming
+    // name
+
+    m.subscribe( 'nameChange', function( arg ) {
+        console.log( person ); // Luke
+        person = arg;
+        console.log( person ); // David
+    });
+
+    // Publish the 'nameChange' topic/event with the new data
+    m.publish( 'nameChange', 'David');
+
+})( mediator );
