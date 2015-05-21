@@ -31,3 +31,35 @@ var car = Object.create(vehicule, {
         enumerable: true
     }
 });
+// Without Object.create
+var vehiculePrototype = {
+    init: function (carModel) {
+        this.model = carModel;
+    },
+    getModel: function () {
+        console.log('The model of this vehicule is..' + this.model);
+    }
+}
+
+function vehicle(model) {
+    function F() {};
+    F.prototype = vehiculePrototype;
+
+    var f = new F();
+
+    f.init(model);
+    return f;
+}
+
+var car = vehicle('Ford Escort');
+car.getModel();
+
+// Third alternative
+var beget = (function () {
+    function F()  {}
+
+    return function (proto) {
+        F.prototype = proto;
+        return new F();
+    };
+})();
