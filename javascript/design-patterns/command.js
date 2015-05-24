@@ -3,7 +3,8 @@ Encapsulate method invocation, requests or operations into a single object
 and gives the ability to both parameterize and pass method calls around.
  */
 
-(function(){
+// basic service object
+
     var CarManager = {
 
         // request information
@@ -24,4 +25,12 @@ and gives the ability to both parameterize and pass method calls around.
             + model + " ( " + id + " ) ";
         }
     };
-})();
+
+
+CarManager.execute = function (name) {
+    return CarManager[name] && CarManager[name].apply(CarManager, [].slice.call(arguments, 1));
+};
+
+// expand so can accept any named methods to be performed on the object
+// passing along any data
+CarManager.execute("buyVehicle", "Ford Excort", "453543");
