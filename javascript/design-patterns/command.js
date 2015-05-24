@@ -26,11 +26,13 @@ and gives the ability to both parameterize and pass method calls around.
         }
     };
 
-
 CarManager.execute = function (name) {
-    return CarManager[name] && CarManager[name].apply(CarManager, [].slice.call(arguments, 1));
-};
+    return CarManager[name].apply(CarManager, [].slice.call(arguments, 1)); };
 
 // expand so can accept any named methods to be performed on the object
 // passing along any data
-CarManager.execute("buyVehicle", "Ford Excort", "453543");
+console.log(CarManager.execute("buyVehicle", "Ford Excort", "453543"));
+console.log(CarManager.execute("arrangeViewing", "Ferrari", "14523"));
+console.log(CarManager.execute("requestInfo", "Ford Mondeo", "54323"));
+console.log(CarManager.execute("requestInfo", "Ford Escort", "34232"));
+
