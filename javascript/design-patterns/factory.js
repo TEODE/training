@@ -31,4 +31,36 @@ TruckFactory.prototype.vehicleClass = Truck;
 
 var truckFactory= new TruckFactory();
 var bigFoot = truckFactory.getVehicle({ monster: true, cylinders: 12 });
-console.log(bigFoot instanceof Truck); // => Truck;
+console.log(bigFoot instanceof Truck); // => True;
+
+/**
+ * The Abstract factory aims to encapsulate a group of individual factories
+ * with a common goal
+ */
+var AbstractVehicleFactory = (function () {
+    var types = {};
+
+    return {
+        getVehicle: function (type, customizations) {
+            var Vehicle = types[type];
+            return (Vehicle) ? new Vehicle(customizations) : null;
+        },
+
+        registerVehicule: function (type, Vehicle) {
+            var proto = Vehicle.prototype;
+
+            // only register classes that fulfill the vehicle contract
+            if (proto.drive && proto.breakDown) {
+                types[type] = Vehicle;
+            }
+            return AbstractVehicleFactory;
+        }
+    };
+})();
+
+// Usage
+AbstractVehicleFactory.registerVehicule("car", Car);
+AbstractVehicleFactory.registerVehicule("truck", Truck);
+
+var car = AbstractVehicleFactory.getVehicle("car", { color: "yellow", turbo: true});
+var truck = AbstractVehicleFactory.getVehicle("truck", { monster: "true", cylinders: 32});
