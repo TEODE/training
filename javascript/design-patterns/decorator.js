@@ -28,3 +28,35 @@ var Superhero = function( firstName, lastName, powers) {
 
 var superman = new Superhero( "Clark", "Kent", ['flight', 'heat-vision']);
 console.log(superman); // includes superhero props as well as gender
+
+// Example 1: Basic decoration of existing object constructors with new functionality
+function vehicle ( vehicleType) {
+
+    // properties and defaults
+    this.vehicleType = vehicleType || 'car',
+    this.model = 'default',
+    this.license = '0000-000'
+
+}
+
+// Test instance for a basic vehicle
+var testInstance = new vehicle('car');
+console.log(testInstance);
+// vehicle: car, model: default, license:0000-000
+
+// Let's create a new instance of vehicle, to be decorated
+var truck = new vehicle('truck');
+
+// new functionality we're decoration vehicle with
+truck.setModel = function ( modelName ) {
+    this.model = modelName;
+}
+truck.setColor = function ( colorName ) {
+    this.color = colorName;
+}
+
+// Test the value setters and value assignment works correctly
+truck.setModel('CAT');
+truck.setColor('yellow');
+console.log(truck);
+// vehicle:truck, model:CAT, color:yellow
