@@ -60,3 +60,7 @@ truck.setModel('CAT');
 truck.setColor('yellow');
 console.log(truck);
 // vehicle:truck, model:CAT, color:yellow
+
+// Demonstrate 'vehicle' is still unaltered
+var secondInstance = new vehicle('car');
+console.log(secondInstance);
