@@ -70,7 +70,7 @@ console.log(secondInstance);
 // What we're going to decorate
 function MacBook() {
     this.cost = function () { return 997 };
-    this.screenSize - function () { return 13.3 };
+    this.screenSize = function () { return 13.3 };
 }
 
 // Decorator 1
@@ -103,3 +103,166 @@ Engraving(mb);
 Insurance(mb);
 console.log(mb.cost()); //1522
 console.log(mb.screenSize()); //13.3
+
+/**
+ * Pseudo-classical decorators
+ */
+// Constructor.
+var Interface = function (name, methods) {
+    if (arguments.length != 2) {
+        throw new Error("Interface constructor called with " + arguments.length + "arguments, but expected exactly 2.");
+    }
+    this.name = name;
+    this.methods = [];
+    for (var i = 0, len = methods.length; i < len; i++) {
+        if (typeof methods[i] !== 'string') {
+            throw new Error("Interface constructor expects method names to be " + "passed in as a string.");
+        }
+        this.methods.push(methods[i]);
+    }
+};
+
+
+// Static class method.
+Interface.ensureImplements = function (object) {
+    if (arguments.length < 2) {
+        throw new Error("Function Interface.ensureImplements called with " + arguments.length + "arguments, but expected at least 2.");
+    }
+    for (var i = 1, len = arguments.length; i < len; i++) {
+        var interface = arguments[i];
+        if (interface.constructor !== Interface) {
+            throw new Error("Function Interface.ensureImplements expects arguments" + "two and above to be instances of Interface.");
+        }
+        for (var j = 0, methodsLen = interface.methods.length; j < methodsLen; j++) {
+            var method = interface.methods[j];
+            if (!object[method] || typeof object[method] !== 'function') {
+                throw new Error("Function Interface.ensureImplements: object " + "does not implement the " + interface.name + " interface. Method " + method + " was not found.");
+            }
+        }
+    }
+};
+
+var TodoList = new Interface('Composite', ['add', 'remove']);
+var TodoItem = new Interface('TodoItem', ['save']);
+// TodoList class
+var myTodoList = function(id, method, action) {
+    // implements TodoList, TodoItem
+};
+function addTodo(todoInstance) {
+    Interface.ensureImplements(todoInstance, TodoList, TodoItem);
+    // This function will throw an error if a required methode is not implemented
+    // halting executino of the function.
+}
+
+var Macbook = new Interface('Macbook', ['addEngraving', 'addParallels', 'add4GBRam', 'add8GBRam', 'addCase', 'getPrice']);
+
+
+var Bicycle = new Interface('Bicycle', ['assemble', 'wash', 'ride', 'repair',
+    'getPrice']);
+var BicycleDecorator = function(bicycle) { // implements Bicycle
+    Interface.ensureImplements(bicycle, Bicycle);
+    this.bicycle = bicycle;
+}
+BicycleDecorator.prototype = {
+    assemble: function() {
+        return this.bicycle.assemble();
+    },
+    wash: function() {
+        return this.bicycle.wash();
+    },
+    ride: function() {
+        return this.bicycle.ride();
+    },
+    repair: function() {
+        return this.bicycle.repair();
+    },
+    getPrice: function() {
+        return this.bicycle.getPrice();
+    }
+};
+
+
+var MacbookPro = function(){
+// implements Macbook
+};
+
+MacbookPro.prototype = {
+    addEngraving: function () {
+    },
+    addParallels: function () {
+    },
+    add4GBRam: function () {
+    },
+    add8GBRam: function () {
+    },
+    addCase: function () {
+    },
+    getPrice: function () {
+        return 900.00; //base price.
+    }
+};
+
+// Macbook decorator abstract decorator class
+var MacbookDecorator = function( macbook ) {
+    Interface.ensureImplements(macbook, MacBook);
+    this.macbook = macbook;
+};
+
+MacbookDecorator.prototype = {
+    addEngraving: function(){
+        return this.macbook.addEngraving();
+    },
+    addParallels: function(){
+        return this.macbook.addParallels();
+    },
+    add4GBRam: function(){
+        return this.macbook.add4GBRam();
+    },
+    add8GBRam:function(){
+        return this.macbook.add8GBRam();
+    },
+    addCase: function(){
+        return this.macbook.addCase();
+    },
+    getPrice: function(){
+        return this.macbook.getPrice();
+    }
+};
+
+function extend(subClass, superClass) {
+    var F = function() {};
+    F.prototype = superClass.prototype;
+    subClass.prototype = new F();
+    subClass.prototype.constructor = subClass;
+    subClass.superclass = superClass.prototype;
+    if(superClass.prototype.constructor == Object.prototype.constructor) {
+        superClass.prototype.constructor = superClass;
+    }
+}
+
+var CaseDecorator = function( macbook ){
+    /*call the superclass's constructor next*/
+    this.superclass.constructor(macbook);
+};
+
+extend( CaseDecorator, MacbookDecorator );
+
+CaseDecorator.prototype.addCase = function(){
+    return this.macbook.addCase() + " Adding case to macbook ";
+};
+
+CaseDecorator.prototype.getPrice = function(){
+    return this.macbook.getPrice() + 45.00;
+};
+
+// Instanciation of the macbook
+var myMacbookPro = new MacbookPro();
+
+// This will return 900.00
+console.log(myMacbookPro.getPrice());
+
+// Decorate the macbook
+myMacbookPro = new CaseDecorator( myMacbookPro );
+
+// This will return 945.00
+console.log(myMacbookPro.getPrice());
