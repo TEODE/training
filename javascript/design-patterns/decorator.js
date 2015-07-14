@@ -242,7 +242,8 @@ function extend(subClass, superClass) {
 
 var CaseDecorator = function( macbook ){
     /*call the superclass's constructor next*/
-    this.superclass.constructor(macbook);
+    //FIXME: doesn't work
+    //this.superclass.constructor(macbook);
 };
 
 extend( CaseDecorator, MacbookDecorator );
@@ -265,4 +266,5 @@ console.log(myMacbookPro.getPrice());
 myMacbookPro = new CaseDecorator( myMacbookPro );
 
 // This will return 945.00
-console.log(myMacbookPro.getPrice());
+//FIXME: doesn't work
+//console.log(myMacbookPro.getPrice());
