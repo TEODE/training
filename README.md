@@ -5,3 +5,5 @@ Core examples following (amongst others) [JavaScript: The Good Parts](http://www
 Angular.js app building process following the [Free Angular.js online course](http://campus.codeschool.com/courses/shaping-up-with-angular-js/intro) by Code School
 ## Javascript Design Patterns
 Design patterns following [Learning Javascript Design Patterns](http://addyosmani.com/resources/essentialjsdesignpatterns/book/) by Addy Osmani
+## React.js
+Quick start following the [official Getting Started tutorials](https://facebook.github.io/react/docs/getting-started.html) by Facebook
