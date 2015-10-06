@@ -29,7 +29,7 @@ build/Release
 
 **/.idea/
 
-* Directory generated for mobile targets
+# Directory generated for mobile targets
 **/**/android
 **/**/ios
 
