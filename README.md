@@ -6,6 +6,7 @@ Angular.js app building process following the [Free Angular.js online course](ht
 ## Javascript Design Patterns
 Design patterns following [Learning Javascript Design Patterns](http://addyosmani.com/resources/essentialjsdesignpatterns/book/) by Addy Osmani
 ## React.js
-Quick start following the [official Getting Started tutorials](https://facebook.github.io/react/docs/getting-started.html) by Facebook
+Quick start following the [official Getting Started tutorials](https://facebook.github.io/react/docs/getting-started.html) by Facebook.
+And from [here](http://coenraets.org/blog/2015/01/belgian-beer-explorer-with-react-bootstrap-node-js-and-postgres) by Christophe Coenraets.
 ## React-native.js
 Getting Started guide following the [official Getting Started tutorials](https://facebook.github.io/react-native/docs/getting-started.html) by Facebook

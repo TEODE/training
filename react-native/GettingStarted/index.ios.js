@@ -9,7 +9,7 @@ var {
   AppRegistry,
   StyleSheet,
   Text,
-  View,
+  View,                                                    react-
 } = React;
 
 var AwesomeProject = React.createClass({
