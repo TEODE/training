@@ -10,3 +10,5 @@ Quick start following the [official Getting Started tutorials](https://facebook.
 And from [here](http://coenraets.org/blog/2015/01/belgian-beer-explorer-with-react-bootstrap-node-js-and-postgres) by Christophe Coenraets.
 ## React-native.js
 Getting Started guide following the [official Getting Started tutorials](https://facebook.github.io/react-native/docs/getting-started.html) by Facebook
+## Sequelize Node.js ORM
+Getting Started from the [official website](http://docs.sequelizejs.com/en/latest/)
