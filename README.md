@@ -12,3 +12,7 @@ And from [here](http://coenraets.org/blog/2015/01/belgian-beer-explorer-with-rea
 Getting Started guide following the [official Getting Started tutorials](https://facebook.github.io/react-native/docs/getting-started.html) by Facebook
 ## Sequelize Node.js ORM
 Getting Started from the [official website](http://docs.sequelizejs.com/en/latest/)
+## ES6
+Overview of ECMAScript 6 from various sources
+
+*Just run "babel \* --watch --out-file build.js" if developing, then browse index.html*
