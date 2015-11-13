@@ -34,5 +34,5 @@ describe('displayUser', function() {
         // #username span's inner text was updated as we'd expect.
         expect(fetchCurrentUser).toBeCalled();
         expect($('#username').text()).toEqual('Johnny Cash - Logged In');
-    })
-})
+    });
+});
