@@ -8,8 +8,6 @@ var bound = myMock.bind(a); // First instance
 bound(); // First call
 var b = new myMock('first arg', 'second arg'); // Second instance and second call
 
-console.log(myMock.mock.instances[0].name);
-
 describe('mock functions', function() {
     it('counts instances, calls and check properties', function() {
 

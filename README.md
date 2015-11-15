@@ -16,4 +16,4 @@ Overview of ECMAScript 6 from [wintellect](http://www.wintellect.com/devcenter/n
 
 *To transpile ES6 for the browser just run "babel \* --watch --out-file build.js" if made any change, then browse index.html*
 ## Jest Unit Testing
-Getting Starter from the official [quick start](https://facebook.github.io/jest/docs/getting-started.html#content)
+Getting Started and tutorials from the official [quick start](https://facebook.github.io/jest/docs/getting-started.html#content)
