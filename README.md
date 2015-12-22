@@ -17,3 +17,5 @@ Overview of ECMAScript 6 from [wintellect](http://www.wintellect.com/devcenter/n
 *To transpile ES6 for the browser just run "babel \* --watch --out-file build.js" if made any change, then browse index.html*
 ## Jest Unit Testing
 Getting Started and tutorials from the official [quick start](https://facebook.github.io/jest/docs/getting-started.html#content)
+## React.js Boilerplate
+Getting Started the reactJS starter kit [here](https://github.com/kriasoft/react-starter-kit/blob/master/docs/getting-started.md)
