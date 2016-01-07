@@ -24,13 +24,9 @@ Express example requires
 ```npm install express --save```
 
 ##Run connection test
-```babel-node dbtest.js```
-
-```^C```
+```babel-node dbtest```
 
 ##Run express app
-```babel-node expresstest.js```
-
-```^C```
+```babel-node expresstest```
 
 
