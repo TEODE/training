@@ -67,28 +67,30 @@ db.my_documents.searchDoc({
 }, function(err,docs){
     //docs returned with an on-the-fly Full Text Search for 'Kauai'
     //console.log(docs);
-});
 
-//comparative queries - these don't use indexing
-db.my_documents.findDoc({"price >": 50.00}, function(err,docs){
-    //1 or more documents returned with a price > 50
-    //console.log(docs);
-});
+    //comparative queries - these don't use indexing
+    db.my_documents.findDoc({"price >": 50.00}, function(err,docs){
+        //1 or more documents returned with a price > 50
+        //console.log(docs);
+    });
 
 //run a deep match passing an array of objects
 //again flexing the index we created for you
-db.my_documents.findDoc({tags: [{slug : "simple"}]}, function(err,docs){
-    //1 or more documents returned
-    //console.log(docs);
-});
+    db.my_documents.findDoc({tags: [{slug : "simple"}]}, function(err,docs){
+        //1 or more documents returned
+        //console.log(docs);
+    });
 
 //NOT IN
-db.my_documents.findDoc({"id <>": [3,5]}, function(err,docs){
-    //documents without ID 3 and 5
-    //console.log(docs);
-});
+    db.my_documents.findDoc({"id <>": [3,5]}, function(err,docs){
+        //documents without ID 3 and 5
+        //console.log(docs);
+    });
 
 //delete all records!
-db.my_documents.destroy({}, function(err, res) {
-    // FIXIT: JSON-style matcher doesn't work
+    db.my_documents.destroy({'body->>description' : "A book about chickens of Kauai"}, function(err, res) {
+        //deletes records where description is "A book about chickens of Kauai"
+    });
+
+
 });
